@@ -65,6 +65,17 @@ class User {
       }); // give me all elements where the ID is one of the IDs mentioned in this array
   }
 
+  deleteItemFromCart(productId) {
+    const updatedCartItems = this.cart.items.filter((item) => {
+      return item.productId.toString() !== productId.toString();
+    });
+    const db = getDb();
+    return db.collection("users").updateOne(
+      { _id: new ObjectId(this._id) },
+      { $set: { cart: { items: updatedCartItems } } } //u can understand if you see the mongdb database
+    );
+  }
+
   static findById(userId) {
     const db = getDb();
     return db
