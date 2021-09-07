@@ -1,0 +1,40 @@
+.add-episode__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-episode__contents {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px;
+}
+
+.add-episode__contents:first-child {
+  margin-top: 50px;
+}
+
+.add-episode__contents input {
+  width: 300px;
+  margin-top: 8px;
+}
+
+.add-episode__contents textarea {
+  width: 300px;
+  margin-top: 8px;
+}
+
+.add-episode__btn {
+  background-color: white;
+  color: teal;
+  border: 1px solid teal;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.add-episode__btn:hover {
+  cursor: pointer;
+  color: white;
+  background-color: teal;
+}

@@ -3,10 +3,9 @@ const MongoClient = mongodb.MongoClient;
 
 let _db;
 
-const mongoConnect = (callback) => {
+const MongoConnect = (callback) => {
   MongoClient.connect(
-    "mongodb+srv://letthingsflow:sohkaniz65@cluster0.rdreg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    { useNewUrlParser: true, useUnifiedTopology: true }
+    "mongodb+srv://sunbelt:sohkaniz65@cluster0.c0d1i.mongodb.net/shop?retryWrites=true&w=majority"
   )
     .then((client) => {
       console.log("Connected!");
@@ -15,7 +14,6 @@ const mongoConnect = (callback) => {
     })
     .catch((err) => {
       console.log(err);
-      throw err;
     });
 };
 
@@ -23,8 +21,8 @@ const getDb = () => {
   if (_db) {
     return _db;
   }
-  throw "No database found!";
+  throw "Np database found!";
 };
 
-exports.mongoConnect = mongoConnect;
+exports.MongoConnect = MongoConnect;
 exports.getDb = getDb;

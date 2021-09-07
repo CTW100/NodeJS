@@ -1,40 +1,41 @@
-const Product = require("../models/product");
-
-exports.getProducts = (req, res, next) => {
-  Product.fetchAll()
-    .then((products) => {
-      res.render("shop.product-list", {
-        prods: products,
-        pageTitle: "All Products",
-        path: "/products",
-      });
-    })
-    .catch((err) => console.log(err));
-};
-
-exports.getProduct = (req, res, next) => {
-  const prodId = req.params.productId;
-  Product.findById(prodId)
-    .then((product) => {
-      res.render("shop/product-detail", {
-        product: product,
-        pageTitle: product.title,
-        path: "/products",
-      });
-    })
-    .catch((err) => console.log(err));
-};
+const { fetchAll } = require("../models/celebrity");
+const Celebrity = require("../models/celebrity");
 
 exports.getIndex = (req, res, next) => {
-  Product.fetchAll()
-    .then((products) => {
-      res.render("shop/index", {
-        prods: products,
-        pageTitle: "Shop",
-        path: "/",
-      });
+  res.render("shop/index", { celebs: celebs });
+};
+
+exports.getCelebrity = (req, res, next) => {
+  Celebrity.fetchAll()
+    .then((celebs) => {
+      res.render("shop/celebrity", { celebs: celebs });
     })
     .catch((err) => {
       console.log(err);
     });
+};
+
+exports.postCelebrity = (req, res, next) => {
+  const celeb = new Celebrity(
+    req.body.name,
+    req.body.imageUrl,
+    req.body.ratings,
+    req.body.description
+  );
+  celeb.save();
+  Celebrity.fetchAll()
+    .then((result) => {
+      res.redirect("/celebrity");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.getMind = (req, res, next) => {
+  res.render("shop/mind");
+};
+
+exports.getMine = (req, res, next) => {
+  res.render("shop/mine");
 };

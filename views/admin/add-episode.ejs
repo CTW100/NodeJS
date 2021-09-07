@@ -1,0 +1,27 @@
+<%- include('../includes/head.ejs') %> 
+<link rel="stylesheet" href="/css/add-episode.css">
+</body>
+</html>
+
+<%- include('../includes/nav.ejs') %>
+<body>
+  <form class="add-episode__form" action="/" method="POST">
+    <div class="add-episode__contents">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title">
+    </div>
+    <div class="add-episode__contents">
+      <label for="imageUrl">Image Url</label>
+      <input type="text" name="imageUrl" id="imageUrl">
+    </div>
+    <div class="add-episode__contents">
+      <label for="ratings">Ratings</label>
+      <input type="text" name="ratings" id="ratings">
+    </div>
+    <div class="add-episode__contents">
+      <label for="description">Description</label>
+      <textarea name="description" id="description" cols="30" rows="10"></textarea>
+    </div>
+    <button type="submit" class="add-episode__btn">Add Episode</button>
+  </form>
+</body>

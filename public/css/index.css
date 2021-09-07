@@ -1,0 +1,25 @@
+.index-header {
+  background-color: teal;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.index-header__ul {
+  list-style: none;
+  display: flex;
+}
+
+.index-header__list {
+  margin-right: 15px;
+}
+
+.index-header__list:first-child {
+  margin-left: 20px;
+}
+
+.index-header__anchor {
+  text-decoration: none;
+  color: white;
+}

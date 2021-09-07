@@ -1,0 +1,28 @@
+.grid {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+.celebrities-list__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px 5px 5px gray;
+  width: 200px;
+  height: 400px;
+}
+
+.celebrities-list__card > header > h1 {
+  font-weight: 400;
+}
+
+.celebrities-list__image img {
+  width: 180px;
+}
+
+.celebrities-list__explanation p {
+  text-align: center;
+  font-weight: normal;
+}

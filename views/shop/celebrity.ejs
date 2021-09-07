@@ -1,0 +1,28 @@
+  <%- include('../includes/head.ejs') %> 
+  <link rel="stylesheet" href="/css/celebrity.css">
+</body>
+</html>
+
+<%- include('../includes/nav.ejs') %>
+<body>
+  <% if (celebs.length > 0) { %>
+    <div class="grid">
+      <% for (let celeb of celebs) { %>
+        <article class="celebrities-list__card">
+          <header>
+            <h1><%= celeb.name %></h1>
+          </header>
+          <div>
+            <div class="celebrities-list__image">
+              <img src="<%= celeb.imageUrl %>" alt="Image">
+            </div>
+            <div class="celebrities-list__explanation">
+              <p><%= celeb.ratings %></p>
+              <p><%= celeb.description %></p>
+            </div>
+          </div>
+        </article>
+      <% } %>
+      </div>
+  <% } %>
+</body>
