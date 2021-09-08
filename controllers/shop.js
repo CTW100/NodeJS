@@ -1,4 +1,7 @@
+const { ObjectId } = require("bson");
+const { findById } = require("../models/product");
 const Product = require("../models/product");
+const { getDb } = require("../util/database");
 
 exports.getProducts = (req, res, next) => {
   Product.fetchAll()
