@@ -1,36 +1,35 @@
-const mongoose = require("mongoose");
-const { STRING } = require("sequelize/types");
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
   price: {
     type: Number,
-    required: true,
+    required: true
   },
   description: {
     type: String,
-    required: true,
+    required: true
   },
   imageUrl: {
     type: String,
-    required: true,
+    required: true
   },
   userId: {
     type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
+    ref: 'User',
+    required: true
+  }
 });
 
-module.exports = mongoose.model("Product", productSchema);
+module.exports = mongoose.model('Product', productSchema);
 
-// const mongodb = require("mongodb");
-// const getDb = require("../util/database").getDb;
+// const mongodb = require('mongodb');
+// const getDb = require('../util/database').getDb;
 
 // class Product {
 //   constructor(title, price, description, imageUrl, id, userId) {
@@ -44,20 +43,20 @@ module.exports = mongoose.model("Product", productSchema);
 
 //   save() {
 //     const db = getDb();
-//     let deOp;
+//     let dbOp;
 //     if (this._id) {
-//       //Update the product
-//       deOp = db
-//         .collection("products")
-//         .updatedOne({ _id: new mongodb.ObjectId(this._id) }, { $set: this });
+//       // Update the product
+//       dbOp = db
+//         .collection('products')
+//         .updateOne({ _id: this._id }, { $set: this });
 //     } else {
-//       deOp = db.collection("products").insertOne(this);
+//       dbOp = db.collection('products').insertOne(this);
 //     }
-//     return deOp
-//       .then((result) => {
+//     return dbOp
+//       .then(result => {
 //         console.log(result);
 //       })
-//       .catch((err) => {
+//       .catch(err => {
 //         console.log(err);
 //       });
 //   }
@@ -65,14 +64,14 @@ module.exports = mongoose.model("Product", productSchema);
 //   static fetchAll() {
 //     const db = getDb();
 //     return db
-//       .collection("products")
+//       .collection('products')
 //       .find()
 //       .toArray()
-//       .then((products) => {
+//       .then(products => {
 //         console.log(products);
 //         return products;
 //       })
-//       .catch((err) => {
+//       .catch(err => {
 //         console.log(err);
 //       });
 //   }
@@ -80,14 +79,14 @@ module.exports = mongoose.model("Product", productSchema);
 //   static findById(prodId) {
 //     const db = getDb();
 //     return db
-//       .collection("products")
+//       .collection('products')
 //       .find({ _id: new mongodb.ObjectId(prodId) })
 //       .next()
-//       .then((product) => {
+//       .then(product => {
 //         console.log(product);
 //         return product;
 //       })
-//       .catch((err) => {
+//       .catch(err => {
 //         console.log(err);
 //       });
 //   }
@@ -95,12 +94,12 @@ module.exports = mongoose.model("Product", productSchema);
 //   static deleteById(prodId) {
 //     const db = getDb();
 //     return db
-//       .collection("products")
+//       .collection('products')
 //       .deleteOne({ _id: new mongodb.ObjectId(prodId) })
-//       .then((result) => {
-//         console.log("Deleted");
+//       .then(result => {
+//         console.log('Deleted');
 //       })
-//       .catch((err) => {
+//       .catch(err => {
 //         console.log(err);
 //       });
 //   }
