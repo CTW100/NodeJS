@@ -51,6 +51,12 @@ app.use((req, res, next) => {
     .catch((err) => console.log(err));
 });
 
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isLoggedIn; // locals : this allows us to set local variables that are passed into the views and will only exist in the views which are rendered
+  res.locals.csrfToken = req.csrfToken(); //서버에서는 뷰 페이지를 발행할 때 랜덤으로 생성된 Token을 같이 준 뒤 사용자 세션에 저장해둡니다.
+  next();
+});
+
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);
