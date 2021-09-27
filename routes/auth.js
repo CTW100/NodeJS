@@ -29,6 +29,12 @@ router.post(
     ) // this will be used as a default error message for all your validators
       .isLength({ min: 5 })
       .isAlphanumeric(),
+    body.name("confirmPassword").custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error("Passwords have to match!");
+      }
+      return true;
+    }),
   ], // array => make it read clear &&&& please check password value in the body of the request
   authController.postSignup
 );
