@@ -1,5 +1,5 @@
 const express = require("express");
-const { check } = require("express-validator/check"); // What this does is in the end it just gives us a check function which we import from this package here
+const { check, body } = require("express-validator/check"); // What this does is in the end it just gives us a check function which we import from this package here
 
 const authController = require("../controllers/auth");
 
@@ -13,15 +13,23 @@ router.post("/login", authController.postLogin);
 
 router.post(
   "/signup",
-  check("email")
-    .isEmail()
-    .withMessage("Please enter a valid email.")
-    .custom((value, { req }) => {
-      if (value === "test@test.com") {
-        throw new Error("This email address is forbidden");
-      }
-      return true;
-    }),
+  [
+    check("email")
+      .isEmail()
+      .withMessage("Please enter a valid email.")
+      .custom((value, { req }) => {
+        if (value === "test@test.com") {
+          throw new Error("This email address is forbidden");
+        }
+        return true;
+      }),
+    body(
+      "password",
+      "Please enter a password with only numbers and text and al least 5 characters."
+    ) // this will be used as a default error message for all your validators
+      .isLength({ min: 5 })
+      .isAlphanumeric(),
+  ], // array => make it read clear &&&& please check password value in the body of the request
   authController.postSignup
 );
 
