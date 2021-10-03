@@ -30,6 +30,7 @@ const shopRoutes = require("./routes/shop");
 const authRoutes = require("./routes/auth");
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(multer({ dest: "images" }).single("image")); // we define the input name which will hold the file
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
